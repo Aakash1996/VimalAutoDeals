@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
 public class mainp extends JFrame{
 	JButton b1=new JButton("Log In");
@@ -22,7 +23,7 @@ public class mainp extends JFrame{
 	private JLabel l2=new JLabel("Username");
 	private JLabel l3=new JLabel("Password");
 	private JTextField tf1=new JTextField();
-	private JTextField tf2=new JTextField();
+	private JPasswordField tf2=new JPasswordField();
 	gcon k=new gcon();
 	Connection d=k.getDBConnection();
 	
@@ -65,7 +66,7 @@ public class mainp extends JFrame{
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("there1    ");
 			String s1=tf1.getText();
-			String s2=tf2.getText();
+			String s2=String.valueOf(tf2.getPassword());
 			String sql="Select * from LOGIN";
 			try {
 				System.out.println("there2    ");
@@ -90,7 +91,6 @@ public class mainp extends JFrame{
 			if(i==1)
 				{
 					d.close(); 
-					l4.setText("Successful Login");
 					doit pw = new doit(s1); // create ButtonFrame
 					pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 					Toolkit tk=Toolkit.getDefaultToolkit();

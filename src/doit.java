@@ -16,12 +16,10 @@ import javax.swing.JTextField;
 public class doit extends JFrame{
 
 	JPanel p1 = new JPanel();
-	JButton b1 = new JButton();
-	JButton b2 = new JButton();
-	JButton b3 = new JButton();
-	JButton b4 = new JButton();
-	JLabel l1;
-	String s2;
+	JButton b1 = new JButton("Purchase");
+	JButton b2 = new JButton("Sale");
+	JLabel l1 = new JLabel();
+	String s2 = new String();
 	public doit(String s1) {
 		// TODO Auto-generated constructor stub
 		ButtonHandler l=new ButtonHandler();
@@ -31,28 +29,10 @@ public class doit extends JFrame{
 		l1.setBounds(1100, 20, 100, 30);
 		b1.setBounds(500, 70, 300, 40);
 		b2.setBounds(500, 130, 300, 40);
-		b3.setBounds(500, 190, 300, 40);
-		b4.setBounds(500, 250, 300, 40);
-		b5.setBounds(1100, 60, 100, 30);
-		b6.setBounds(500, 310, 300, 40);
-		b7.setBounds(500, 370, 300, 40);
 		b1.addActionListener(l);
-		b8.setBounds(500, 430, 300, 40);
 		b2.addActionListener(l);
-		b8.addActionListener(l);
-		b3.addActionListener(l);
-		b4.addActionListener(l);
-		b5.addActionListener(l);
-		b6.addActionListener(l);
-		b7.addActionListener(l);
-		p1.add(b6);
-		p1.add(b7);
-		p1.add(b8);
 		p1.add(b1);
 		p1.add(b2);
-		p1.add(b3);
-		p1.add(b4);
-		p1.add(b5);
 		p1.add(l1);
 		getContentPane().add(p1);
 	}
@@ -70,7 +50,7 @@ public class doit extends JFrame{
 				 pw.setVisible(true);
 				setVisible(false);
 			}
-			if(e.getSource()==b2)
+			/*if(e.getSource()==b2)
 			{
 				 sentry pw = new sentry(s2); // create ButtonFrame
 				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -155,7 +135,7 @@ public class doit extends JFrame{
 				 pw.setVisible(true);
 				setVisible(false);
 				
-			}
+			}*/
 		}
 		
 	}
