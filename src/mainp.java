@@ -83,9 +83,8 @@ public class mainp extends JFrame{
 					if(s1.equals(us)&&s2.equals(pa))
 					{
 						i=1;
-					}
-					if(i==1)
 						break;
+					}
 				}
 				System.out.println("there6    ");
 			if(i==1)

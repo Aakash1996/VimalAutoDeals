@@ -18,10 +18,11 @@ public class doit extends JFrame{
 	JPanel p1 = new JPanel();
 	JButton b1 = new JButton("Purchase");
 	JButton b2 = new JButton("Sale");
+        JButton b3 = new JButton("Vstock");
 	JLabel l1 = new JLabel();
 	String s2 = new String();
 	public doit(String s1) {
-		// TODO Auto-generated constructor stub
+		super("Main Menu");
 		ButtonHandler l=new ButtonHandler();
 		s2=s1;
 		p1.setLayout(null);
@@ -29,10 +30,13 @@ public class doit extends JFrame{
 		l1.setBounds(1100, 20, 100, 30);
 		b1.setBounds(500, 70, 300, 40);
 		b2.setBounds(500, 130, 300, 40);
+                b3.setBounds(500, 190, 300, 40);
 		b1.addActionListener(l);
 		b2.addActionListener(l);
+                b3.addActionListener(l);
 		p1.add(b1);
 		p1.add(b2);
+                p1.add(b3);
 		p1.add(l1);
 		getContentPane().add(p1);
 	}
@@ -50,9 +54,9 @@ public class doit extends JFrame{
 				 pw.setVisible(true);
 				setVisible(false);
 			}
-			/*if(e.getSource()==b2)
+			if(e.getSource()==b2)
 			{
-				 sentry pw = new sentry(s2); // create ButtonFrame
+				 carsearch pw = new carsearch(s2); // create ButtonFrame
 				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 				 Toolkit tk=Toolkit.getDefaultToolkit();
 				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight()); // set frame size
@@ -61,14 +65,10 @@ public class doit extends JFrame{
 			}
 			if(e.getSource()==b3)
 			{
-				 workeropt pw = new workeropt(s2); // create ButtonFrame
-				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-				 Toolkit tk=Toolkit.getDefaultToolkit();
-				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
-				 pw.setVisible(true);
-				setVisible(false);
+				VStock pw = new VStock(s2); // create ButtonFrame
+				
 			}
-			if(e.getSource()==b4)
+			/*if(e.getSource()==b4)
 			{
 				 ml pw = new ml(s2); // create ButtonFrame
 				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );

@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
@@ -46,6 +45,8 @@ public class pentry extends JFrame{
 	JButton b1 = new JButton("Save");
 	JButton b2 = new JButton("Back");
 	JButton b3 = new JButton("Calculate total cost");
+	JButton b4 = new JButton("Print");
+	
 	JPanel p1 = new JPanel();
 	String s1 = new String();
 	
@@ -54,7 +55,7 @@ public class pentry extends JFrame{
 	Connection d;
 	
 	public pentry(String s2) {
-		// TODO Auto-generated constructor stub
+	super("Purchase Menu");
 	s1=s2;
 	p1.setLayout(null);
 	l10.setText("Welcome "+s2);
@@ -85,15 +86,17 @@ public class pentry extends JFrame{
 	t10.setBounds(500,50+240+20,100,25);
 	t11.setBounds(500,350+30+20,100,25);
 	t12.setBounds(500,350+60+20,100,25);
-	
+        
 	b1.setBounds(450,500,100,30);
 	b2.setBounds(650,500,100,30);
 	b3.setBounds(620,50+200,300,25);
+	b4.setBounds(850,500,100,30);
 	
 	ButtonHandler l=new ButtonHandler();
 	b1.addActionListener(l);
 	b2.addActionListener(l);
 	b3.addActionListener(l);
+	b4.addActionListener(l);
 	p1.add(l1);
 	p1.add(b1);
 	p1.add(l2);
@@ -124,6 +127,7 @@ public class pentry extends JFrame{
 	p1.add(b1);
 	p1.add(b2);
 	p1.add(b3);
+	p1.add(b4);
 
 	getContentPane().add(p1);
 	}
@@ -132,7 +136,6 @@ private class ButtonHandler implements ActionListener
 {
 
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 	if(e.getSource()==b1)
 	{
 		String s3 = t3.getText();
@@ -145,6 +148,12 @@ private class ButtonHandler implements ActionListener
 		String s10 = t10.getText();
 		String s11 = t11.getText();
 		String s12 = t12.getText();
+                
+                if(s8.equals(""))
+                    s8="0";
+                
+                if(s9.equals(""));
+                    s9="0";
 		
 		d = g.getDBConnection();
 		try{
@@ -158,6 +167,8 @@ private class ButtonHandler implements ActionListener
 			stm.executeUpdate(sql);
 			String sql1 = new String("insert into seller values('"+s3+"','"+dat+"','"+s11+"',"+s12+")");
 			stm.executeUpdate(sql1);
+			String sql2 = new String("insert into stock values('"+s3+"',"+total_cost+",'"+s6+"','"+s4+"','"+s5+"','"+s7+"')");
+			stm.executeUpdate(sql2);
 			d.close();
 			doit dit = new doit(s1);
 			Toolkit tk = Toolkit.getDefaultToolkit();
@@ -183,7 +194,11 @@ private class ButtonHandler implements ActionListener
 		double p2 = Double.parseDouble(t9.getText());
 		l14.setText("The total cost is "+Double.toString(p1+p2));
 	}
-		
+	
+	if(e.getSource()==b4)
+	{
+		// TODO
+	}
 	}
 	
 }
