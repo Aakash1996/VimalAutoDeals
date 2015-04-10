@@ -8,13 +8,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.AbstractAction;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.KeyStroke;
 
 public class mainp extends JFrame{
 	JButton b1=new JButton("Log In");
@@ -57,27 +60,23 @@ public class mainp extends JFrame{
 		getContentPane().add(p1);
 		ButtonHandler l=new ButtonHandler();
 		b1.addActionListener(l);
-	}
-	
-	private class ButtonHandler implements ActionListener
-	{
-
-		
-		public void actionPerformed(ActionEvent arg0) {
-			System.out.println("there1    ");
+                p1.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,0),"clickButton");
+                p1.getRootPane().getActionMap().put("clickButton",new AbstractAction(){
+        public void actionPerformed(ActionEvent ae)
+        {
 			String s1=tf1.getText();
 			String s2=String.valueOf(tf2.getPassword());
 			String sql="Select * from LOGIN";
 			try {
-				System.out.println("there2    ");
+				//System.out.println("there2    ");
 				stm = d.createStatement();
-				System.out.println("there3    ");
+				//System.out.println("there3    ");
 				ResultSet rs = stm.executeQuery(sql);
-				System.out.println("there4    ");
+				//System.out.println("there4    ");
 				int i=0;
 				while (rs.next())
 				{
-					System.out.println("there5    ");
+					//System.out.println("there5    ");
 					String us = rs.getString("username");
 					String pa = rs.getString("pwd");
 					if(s1.equals(us)&&s2.equals(pa))
@@ -86,7 +85,64 @@ public class mainp extends JFrame{
 						break;
 					}
 				}
-				System.out.println("there6    ");
+				//System.out.println("there6    ");
+			if(i==1)
+				{
+					d.close(); 
+					doit pw = new doit(s1); // create ButtonFrame
+					pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+					Toolkit tk=Toolkit.getDefaultToolkit();
+					pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight()); // set frame size
+					pw.setVisible(true);
+					setVisible(false);
+				}
+				else
+				{
+					l4.setText("Username or Password is Incorrect");
+					l4.setVisible(true);
+				}
+			} 
+			catch (SQLException ef) {
+				// TODO Auto-generated catch block
+				
+				System.out.println("lelllo erroresss    ");
+				ef.printStackTrace();
+				
+			
+		
+			}
+        }
+    });
+	}
+	
+	private class ButtonHandler implements ActionListener
+	{
+
+		
+		public void actionPerformed(ActionEvent arg0) {
+			//System.out.println("there1    ");
+			String s1=tf1.getText();
+			String s2=String.valueOf(tf2.getPassword());
+			String sql="Select * from LOGIN";
+			try {
+				//System.out.println("there2    ");
+				stm = d.createStatement();
+				//System.out.println("there3    ");
+				ResultSet rs = stm.executeQuery(sql);
+				//System.out.println("there4    ");
+				int i=0;
+				while (rs.next())
+				{
+					//System.out.println("there5    ");
+					String us = rs.getString("username");
+					String pa = rs.getString("pwd");
+					if(s1.equals(us)&&s2.equals(pa))
+					{
+						i=1;
+						break;
+					}
+				}
+				//System.out.println("there6    ");
 			if(i==1)
 				{
 					d.close(); 

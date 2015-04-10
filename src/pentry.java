@@ -154,6 +154,9 @@ private class ButtonHandler implements ActionListener
                 
                 if(s9.equals(""));
                     s9="0";
+                    
+                if(s10.equals(""))
+                    s10="0";
 		
 		d = g.getDBConnection();
 		try{

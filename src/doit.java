@@ -19,6 +19,8 @@ public class doit extends JFrame{
 	JButton b1 = new JButton("Purchase");
 	JButton b2 = new JButton("Sale");
         JButton b3 = new JButton("Vstock");
+        JButton b4 = new JButton("View Sales");
+        JButton b5 = new JButton("Add Insurance");
 	JLabel l1 = new JLabel();
 	String s2 = new String();
 	public doit(String s1) {
@@ -31,12 +33,18 @@ public class doit extends JFrame{
 		b1.setBounds(500, 70, 300, 40);
 		b2.setBounds(500, 130, 300, 40);
                 b3.setBounds(500, 190, 300, 40);
+                b4.setBounds(500, 250, 300, 40);
+                b5.setBounds(500, 310, 300, 40);
 		b1.addActionListener(l);
 		b2.addActionListener(l);
                 b3.addActionListener(l);
+                b4.addActionListener(l);
+                b5.addActionListener(l);
 		p1.add(b1);
 		p1.add(b2);
                 p1.add(b3);
+                p1.add(b4);
+                p1.add(b5);
 		p1.add(l1);
 		getContentPane().add(p1);
 	}
@@ -47,47 +55,51 @@ public class doit extends JFrame{
 			// TODO Auto-generated method stub
 			if(e.getSource()==b1)
 			{
-				 pentry pw = new pentry(s2); // create ButtonFrame
-				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-				 Toolkit tk=Toolkit.getDefaultToolkit();
-				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight()); // set frame size
-				 pw.setVisible(true);
+				pentry pw = new pentry(s2); // create ButtonFrame
+				pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				Toolkit tk=Toolkit.getDefaultToolkit();
+				pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight()); // set frame size
+				pw.setVisible(true);
 				setVisible(false);
 			}
 			if(e.getSource()==b2)
 			{
-				 carsearch pw = new carsearch(s2); // create ButtonFrame
-				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-				 Toolkit tk=Toolkit.getDefaultToolkit();
-				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight()); // set frame size
-				 pw.setVisible(true);
-				 setVisible(false);
+				carsearch pw = new carsearch(s2); // create ButtonFrame
+				pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				Toolkit tk=Toolkit.getDefaultToolkit();
+				pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight()); // set frame size
+				pw.setVisible(true);
+				setVisible(false);
 			}
 			if(e.getSource()==b3)
 			{
-				VStock pw = new VStock(s2); // create ButtonFrame
-				
-			}
-			/*if(e.getSource()==b4)
-			{
-				 ml pw = new ml(s2); // create ButtonFrame
+				 VStock pw = new VStock(s2); // create ButtonFrame
 				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 				 Toolkit tk=Toolkit.getDefaultToolkit();
 				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
 				 pw.setVisible(true);
-				setVisible(false);
+				 setVisible(false);
+			}
+			if(e.getSource()==b4)
+			{
+				 vsales pw = new vsales(s2); // create ButtonFrame
+				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				 Toolkit tk=Toolkit.getDefaultToolkit();
+				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
+				 pw.setVisible(true);
+				 setVisible(false);
 				
 			}
 			if(e.getSource()==b5)
 			{
-				 mainp pw = new mainp(); // create ButtonFrame
-				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-				 Toolkit tk=Toolkit.getDefaultToolkit();
-				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
-				 pw.setVisible(true);
+				AddInsuranceSearch pw = new AddInsuranceSearch(s2); // create ButtonFrame
+				pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				Toolkit tk=Toolkit.getDefaultToolkit();
+				pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
+				pw.setVisible(true);
 				setVisible(false);
 			}
-			if(e.getSource()==b6)
+			/*if(e.getSource()==b6)
 			{
 				
 				Statement stm=null;
