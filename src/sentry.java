@@ -84,26 +84,26 @@ public class sentry extends JFrame {
 		l7.setBounds(350,50+150,100,60);
 		l70.setBounds(500,50+150,100,60);
 		
-		l2.setBounds(300,300, 300, 60);
+		l2.setBounds(300,250, 300, 60);
 		l2.setFont(new Font("Serif", Font.BOLD, 30));
 		
-		l8.setBounds(350,300+30,100,60);
-		l9.setBounds(350,300+60,100,60);
-		l11.setBounds(350,300+90,100,60);
-		l15.setBounds(350,300+230,100,60);
-		l14.setBounds(650,350,400,50);
+		l8.setBounds(350,250+30,100,60);
+		l9.setBounds(350,250+60,100,60);
+		l11.setBounds(350,250+90,100,60);
+		l15.setBounds(350,250+230,100,60);
+		l14.setBounds(650,280,400,50);
 		
-		t8.setBounds(500,300+30+20,100,25);
-		t9.setBounds(500,300+60+20,100,25);
-		textarea.setBounds(500,300+90+20,300,125);
-		t15.setBounds(500,300+230+20,100,25);
+		t8.setBounds(500,250+30+20,100,25);
+		t9.setBounds(500,250+60+20,100,25);
+		textarea.setBounds(500,250+90+20,300,125);
+		t15.setBounds(500,250+230+20,100,25);
 		
                 t15.setText("0");
 		
 		b3.setBounds(650,500+100,75,25);
 		b2.setBounds(650,380,125,25);
-		b1.setBounds(300,500+100,150,25);
-		b4.setBounds(475,500+100,150,25);
+		b1.setBounds(300,500+100,200,25);
+		b4.setBounds(475,500+150,200,25);
 		
 		ButtonHandler l = new ButtonHandler();
 		b3.addActionListener(l);
@@ -190,15 +190,17 @@ public class sentry extends JFrame {
 					DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 					Calendar cal = Calendar.getInstance();
 					String dat = df.format(cal.getTime());
-					String total_cost = Integer.toString(Integer.parseInt(s8)+Integer.parseInt(s9));
+					String total_cost = s7;
 					String sql = new String("insert into carsold values('"+s1+"','"+dat+"','"+s4+"','"+s5+"','"+s6+"','"+s7+"',"+s8+","+s9+","+total_cost+")");
-					System.out.println(sql);
+					//System.out.println(sql);
 					stm = d.createStatement();
-					stm.executeUpdate(sql);
+					stm.executeQuery(sql);
 					String sql1 = new String("insert into customers values('"+s1+"','"+dat+"','"+s8+"','"+s9+"','"+s10+")");
-					stm.executeUpdate(sql1);
+					stm.executeQuery(sql1);
+                                        String sql2 = new String("delete from stock where car_no = '"+s1+"'");
+                                        stm.executeQuery(sql2);
 					d.close();
-					doit dit = new doit(s1);
+					doit dit = new doit(s);
 					Toolkit tk = Toolkit.getDefaultToolkit();
 					dit.setSize((int)tk.getScreenSize().getWidth(), (int)tk.getScreenSize().getHeight());
 					dit.setVisible(true);
@@ -210,7 +212,7 @@ public class sentry extends JFrame {
 			}
 			
 			if (e.getSource() == b4) {
-				AddFinanceSearch pw = new AddFinanceSearch(s); // create ButtonFrame
+				AddFinance pw = new AddFinance(s1, s); // create ButtonFrame
 				pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 				Toolkit tk=Toolkit.getDefaultToolkit();
 				pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());

@@ -220,6 +220,13 @@ class AddInsurance extends JFrame{
                     Logger.getLogger(AddInsurance.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
+                sql = "update table stock set total_cost=total_cost+"+t1.getText()+" where car_no="+carno1;
+                try {
+                    stm.executeUpdate(sql);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddInsurance.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 doit pw = new doit(s2); // create ButtonFrame
 		pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		Toolkit tk=Toolkit.getDefaultToolkit();

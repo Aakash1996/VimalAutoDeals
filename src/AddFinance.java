@@ -106,6 +106,7 @@ class AddFinance extends JFrame{
         l4.setBounds(400, 380, 150, 30);
         
         p1 = new JPanel();
+        p1.setLayout(null);
         p1.add(carno);
         p1.add(welcome);
         p1.add(l1);
