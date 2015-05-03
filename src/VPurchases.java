@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class VStock extends JFrame{
+public class VPurchases extends JFrame{
 
     	int co;
 	JPanel p1=new JPanel();
@@ -43,9 +43,9 @@ public class VStock extends JFrame{
 	JScrollPane scrollPane;
 	JTable table1;
 	String colnames[]={"Car No","Model","Color","Chassis No.","Engine No.","Total Cost Price"};
-	public VStock(String s2) {
+	public VPurchases(String s2) {
 		// TODO Auto-generated constructor stub
-	super("Stock");
+	super("Purchases");
 	p1.setLayout(null);
 	user=s2;
 	d=k.getDBConnection();
@@ -66,7 +66,7 @@ public class VStock extends JFrame{
         co = 0;
 	try
 	{
-		String sql="Select count(*) as count from stock";
+		String sql="Select count(*) as count from carpurchased";
 		stm=d.createStatement();
 		ResultSet rs=stm.executeQuery(sql);
 		
@@ -83,7 +83,7 @@ public class VStock extends JFrame{
 	
 	try
 	{
-		String sql="Select * from stock";
+		String sql="Select * from carpurchased";
 		stm=d.createStatement();
 		ResultSet rs=stm.executeQuery(sql);
 		int i=0;
@@ -150,10 +150,10 @@ private class ButtonHandler implements ActionListener
 				e1.printStackTrace();
 			}
 			doit pw = new doit(user); // create ButtonFrame
-			pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-			Toolkit tk=Toolkit.getDefaultToolkit();
-			pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
-			pw.setVisible(true);
+			 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+			 Toolkit tk=Toolkit.getDefaultToolkit();
+			 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
+			 pw.setVisible(true);
 			setVisible(false);
 		}
 		

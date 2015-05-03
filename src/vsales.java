@@ -137,32 +137,20 @@ private class ButtonHandler implements ActionListener
 		// TODO Auto-generated method stub
 		if(e.getSource()==b1||e.getSource()==b2)
 		{
-			/*if(e.getSource()==b2)
-			{
-					 ptable pw = new ptable(table1); // create ButtonFrame
-			}
-			try {
-				d.close();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}*/
 			doit pw = new doit(user); // create ButtonFrame
-			 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-			 Toolkit tk=Toolkit.getDefaultToolkit();
-			 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
-			 pw.setVisible(true);
+			pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+			Toolkit tk=Toolkit.getDefaultToolkit();
+			pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
+			pw.setVisible(true);
 			setVisible(false);
 		}
 		
 		if(e.getSource()==b4)
 		{
 			Date s1=tf1.getDate();
-			//System.out.println(s1);
 			SimpleDateFormat sdf=new SimpleDateFormat("dd.MMM.yyyy");
 			String z1=sdf.format(s1);
 			s1=tf2.getDate();
-			//System.out.println(s1);
 			String z2=sdf.format(s1);
 			int co=0;
 			try
@@ -194,7 +182,6 @@ private class ButtonHandler implements ActionListener
 					tab[i][1] = rs.getString("billno");
 					tab[i][2] = rs.getString("name");
 					tab[i][3] = rs.getString("total");
-					//tab[i][4] = rs.getString("pid");
 					i++;
 				}
 			}
@@ -205,10 +192,8 @@ private class ButtonHandler implements ActionListener
 			
 			p1.remove(scrollPane);
 			table1=new JTable(tab,colnames);
-			//table1.addKeyListener(this);
 			scrollPane = new JScrollPane(table1);
 			table1.setFillsViewportHeight(true);
-			//createKeybindings(table1);
 			scrollPane.setBounds(25,100,1300,580);
 			p1.add(scrollPane);
 		}
