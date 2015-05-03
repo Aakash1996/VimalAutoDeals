@@ -50,18 +50,19 @@ class AddInsurance extends JFrame{
     Connection d;
     Statement stm;
     ResultSet rs;
-    String sql,s2;
+    String sql,s2,carno1;
     JPanel p1;
     public AddInsurance(String car, String name) {
         super("Insurance");
         s2 = name;
+        carno1 = car;
         ButtonHandler l=new ButtonHandler();
         welcome.setText(name);
         welcome.setBounds(1100, 20, 100, 30);
         
         carno.setText("Add insurance for vehicle number "+car);
         carno.setFont(new Font("Serif", Font.BOLD, 30));
-        carno.setBounds(450, 70, 500, 40);
+        carno.setBounds(450, 70, 600, 40);
         
         tf1.setDate(Calendar.getInstance().getTime());
 	tf1.setFormats(new SimpleDateFormat("dd.MMM.yyyy"));
@@ -176,15 +177,55 @@ class AddInsurance extends JFrame{
             else if(ae.getSource() == b3)
             {
                 d = k.getDBConnection();
-                
+                boolean flag = false;
                 try {
                     stm = d.createStatement();
                 } catch (SQLException ex) {
                     Logger.getLogger(AddInsurance.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
-                String sql = "delete from insurance where"
+                String sql;
+                String s1,s2;
+                try{
+                    s1 = cb1.getSelectedItem().toString();
+                }catch(Exception e){
+                    s1 = null;
+                }
                 
+                try{
+                    s2 = cb2.getSelectedItem().toString();
+                }catch(Exception e){
+                    s2 = null;
+                }
+                
+                sql = "delete from insurance where car_no='"+carno1+"'";
+                
+                try {
+                    stm.executeUpdate(sql);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddInsurance.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                sql = "insert into insurance values('"+carno1+"','"+cb1.getSelectedItem().toString()+"','"+cb2.getSelectedItem().toString()+"',"+tf1.getDate()+","+tf2.getDate()+","+t1.getText()+","+t2.getText()+")";
+                try {
+                    stm.executeUpdate(sql);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddInsurance.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                sql = "update table carpurchased set repair_misc=repair_misc+"+t1.getText()+" where car_no="+carno1;
+                try {
+                    stm.executeUpdate(sql);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddInsurance.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                doit pw = new doit(s2); // create ButtonFrame
+		pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		Toolkit tk=Toolkit.getDefaultToolkit();
+		pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
+		pw.setVisible(true);
+		setVisible(false);   
             }
             
             else if(ae.getSource() == b4)

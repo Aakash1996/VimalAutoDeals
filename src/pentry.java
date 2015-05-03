@@ -103,14 +103,14 @@ public class pentry extends JFrame{
         t14.setBounds(500,350+120+20,100,25);
         t15.setBounds(500,350+150+20,100,25);
         
-        t3.setText("t3");
-        t4.setText("t4");
-        t5.setText("t5");
-        t6.setText("t6");
-        t7.setText("t7");
+        //t3.setText("t3");
+        //t4.setText("t4");
+        //t5.setText("t5");
+        //t6.setText("t6");
+        //t7.setText("t7");
         t8.setText("0");
-        t9.setText("t9");
-        t10.setText("t10");
+        //t9.setText("t9");
+        //t10.setText("t10");
         t11.setText("0");
         t12.setText("0");
         t13.setText("0");
@@ -121,7 +121,7 @@ public class pentry extends JFrame{
         
 	b1.setBounds(450,600,100,30);
 	b2.setBounds(650,600,100,30);
-	b3.setBounds(620,50+400,300,25);
+	b3.setBounds(620,50+400,300,35);
 	b4.setBounds(850,600,100,30);
 	
 	ButtonHandler l=new ButtonHandler();

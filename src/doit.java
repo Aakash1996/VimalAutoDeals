@@ -1,16 +1,10 @@
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 
 public class doit extends JFrame{
@@ -21,7 +15,9 @@ public class doit extends JFrame{
         JButton b3 = new JButton("Vstock");
         JButton b4 = new JButton("View Sales");
         JButton b5 = new JButton("Add Insurance");
-	JLabel l1 = new JLabel();
+        JButton b6 = new JButton("Finance a vehicle");
+	JButton b7 = new JButton("Logout");
+        JLabel l1 = new JLabel();
 	String s2 = new String();
 	public doit(String s1) {
 		super("Main Menu");
@@ -35,16 +31,22 @@ public class doit extends JFrame{
                 b3.setBounds(500, 190, 300, 40);
                 b4.setBounds(500, 250, 300, 40);
                 b5.setBounds(500, 310, 300, 40);
+                b6.setBounds(500, 370, 300, 40);
+                b7.setBounds(200, 530, 100, 40);
 		b1.addActionListener(l);
 		b2.addActionListener(l);
                 b3.addActionListener(l);
                 b4.addActionListener(l);
                 b5.addActionListener(l);
-		p1.add(b1);
+                b6.addActionListener(l);
+		b7.addActionListener(l);
+                p1.add(b1);
 		p1.add(b2);
                 p1.add(b3);
                 p1.add(b4);
                 p1.add(b5);
+                p1.add(b6);
+                p1.add(b7);
 		p1.add(l1);
 		getContentPane().add(p1);
 	}
@@ -99,46 +101,30 @@ public class doit extends JFrame{
 				pw.setVisible(true);
 				setVisible(false);
 			}
-			/*if(e.getSource()==b6)
+			if(e.getSource()==b6)
 			{
+				AddFinanceSearch pw = new AddFinanceSearch(s2);
+				pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				Toolkit tk=Toolkit.getDefaultToolkit();
+				pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
+				pw.setVisible(true);
+				setVisible(false);
+			}
 				
-				Statement stm=null;
-				gcon k=new gcon();
-				Connection d=k.getDBConnection();
-				try
-				{
-					d.setAutoCommit(false);
-					String sql="savepoint beforebill";
-					stm=d.createStatement();
-					stm.executeUpdate(sql);
-					//System.out.println("Savepoint is to be created");
-					Date d1=null; 
-					billing pw = new billing(s2,d1, "null", "null", 0, 0, 0, 0, 0, "null","null", "null","null", "null","null","null","null","null","null",d); // create ButtonFrame
-					 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-					 Toolkit tk=Toolkit.getDefaultToolkit();
-					 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
-					 pw.setVisible(true);
-					 setVisible(false);
-				}
-				catch(SQLException fe)
-				{
-					JOptionPane.showMessageDialog(null, "Savepoint not created");
-					//System.out.println("Savepoint not created");
-				}
 				
 				 
-			}
+			
 			if(e.getSource()==b7)
 			{
-				 pdet pw = new pdet(s2); // create ButtonFrame
-				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-				 Toolkit tk=Toolkit.getDefaultToolkit();
-				 pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
-				 pw.setVisible(true);
+				mainp pw = new mainp(); // create ButtonFrame
+				pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+				Toolkit tk=Toolkit.getDefaultToolkit();
+				pw.setSize( (int) tk.getScreenSize().getWidth(),(int) tk.getScreenSize().getHeight());
+				pw.setVisible(true);
 				setVisible(false);
 				
 			}
-			if(e.getSource()==b8)
+			/*if(e.getSource()==b8)
 			{
 				 vbe pw = new vbe(s2); // create ButtonFrame
 				 pw.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
