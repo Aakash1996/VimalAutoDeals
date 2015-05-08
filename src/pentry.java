@@ -236,11 +236,6 @@ private class ButtonHandler implements ActionListener
 			JOptionPane.showMessageDialog(null,"Refill all fields and try again");
 			error.printStackTrace();
 		}
-                pentry2 ptry = new pentry2(s1,s3);
-			Toolkit tk = Toolkit.getDefaultToolkit();
-			ptry.setSize((int)tk.getScreenSize().getWidth(), (int)tk.getScreenSize().getHeight());
-			ptry.setVisible(true);
-			setVisible(false);
 	}
 	
 	if(e.getSource()==b2){
@@ -258,7 +253,7 @@ private class ButtonHandler implements ActionListener
                 double p4 = Double.parseDouble(t13.getText());
                 double p5 = Double.parseDouble(t14.getText());
                 double p6 = Double.parseDouble(t15.getText());
-                l14.setText("The total cost is "+Double.toString(p1+p2));
+                l14.setText("The total cost is "+Double.toString(p1+p2+p3+p4+p5+p6));
 	}
 	
 	if(e.getSource()==b4)

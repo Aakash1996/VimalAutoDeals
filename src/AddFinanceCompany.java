@@ -33,9 +33,9 @@ public class AddFinanceCompany extends JFrame{
             s1=s2;
             l2.setBounds(250, 10, 100, 30);
             l1.setBounds(20, 50, 100, 30);
-            t1.setBounds(200, 50, 100, 30);
-            b1.setBounds(10, 200, 60, 30);
-            b2.setBounds(100, 200, 60, 30);
+            t1.setBounds(140, 50, 100, 30);
+            b1.setBounds(10, 100, 60, 30);
+            b2.setBounds(100, 100, 100, 30);
             b1.addActionListener(l);
             b2.addActionListener(l);
             p1.add(b1);p1.add(b2);

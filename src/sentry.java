@@ -101,9 +101,9 @@ public class sentry extends JFrame {
                 t15.setText("0");
 		
 		b3.setBounds(650,500+100,75,25);
-		b2.setBounds(650,380,125,25);
-		b1.setBounds(300,500+100,200,25);
-		b4.setBounds(475,500+150,200,25);
+		b2.setBounds(650,330,125,25);
+		b1.setBounds(300,500+50,200,25);
+		b4.setBounds(300,500+100,200,25);
 		
 		ButtonHandler l = new ButtonHandler();
 		b3.addActionListener(l);
@@ -138,6 +138,7 @@ public class sentry extends JFrame {
 		p1.add(b3);
 		p1.add(b2);
 		p1.add(b1);
+                p1.add(b4);
 		
 		s1 = carno;
 		
@@ -184,6 +185,13 @@ public class sentry extends JFrame {
 				String s8 = t8.getText();
 				String s9 = t9.getText();
 				String s10 = textarea.getText();
+                                
+                                String sp = t15.getText();
+                                Double p1 = Double.parseDouble(s7);
+				Double p2 = Double.parseDouble(sp);
+				String profit = Double.toString(p1-p2);
+                                
+                                
 				
 				d = g.getDBConnection();
 				try{
@@ -191,7 +199,7 @@ public class sentry extends JFrame {
 					Calendar cal = Calendar.getInstance();
 					String dat = df.format(cal.getTime());
 					String total_cost = s7;
-					String sql = new String("insert into carsold values('"+s1+"','"+dat+"','"+s4+"','"+s5+"','"+s6+"','"+s7+"',"+s8+","+s9+","+total_cost+")");
+					String sql = new String("insert into carsold values('"+s1+"','"+dat+"','"+s4+"','"+s5+"','"+s6+"','"+s7+"',"+sp+","+profit+","+total_cost+")");
 					//System.out.println(sql);
 					stm = d.createStatement();
 					stm.executeQuery(sql);
